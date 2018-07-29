@@ -2,8 +2,6 @@ package com.khoa.algorithm.sort;
 
 import java.util.Arrays;
 
-import static com.khoa.algorithm.sort.SortUtils.swap;
-
 public class QuickSort {
     public static void main(String[] args) {
         int[] array = {10,80,30,90,40,50};
@@ -23,10 +21,10 @@ public class QuickSort {
         for (int j = low; j < high; j++) {
             if (array[j] <= pivot) {
                 i++;
-                swap(array, i, j);
+                SortUtils.swap(array, i, j);
             }
         }
-        swap(array, i+1, high);
+        SortUtils.swap(array, i+1, high);
         return (i+1);
     }
 }

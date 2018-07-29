@@ -2,9 +2,6 @@ package com.khoa.algorithm.sort;
 
 import java.util.Arrays;
 
-import static com.khoa.algorithm.sort.SortUtils.getMax;
-import static com.khoa.algorithm.sort.SortUtils.getMin;
-
 
 public class CountSort {
     public static void main(String[] args) {
@@ -15,13 +12,13 @@ public class CountSort {
     }
 
     private static void countSort(int[] array) {
-        int min = getMin(array);
+        int min = SortUtils.getMin(array);
         int offset = 0;
         if (min < 0) {
             offset = -min;
         }
         final int n = array.length;
-        int max = getMax(array);
+        int max = SortUtils.getMax(array);
         int[] count = new int[max+1+offset];
         int[] output = new int[n];
         for (int i = 0; i < n; i++) {

@@ -1,54 +1,27 @@
 package com.khoa.algorithm.sort;
 
+import com.sun.org.apache.xml.internal.security.Init;
+
 import java.util.*;
 
 public class InsertionSort {
-    private static boolean isRunning;
-    private static int frames;
-    private static Thread framesCounter = new Thread() {
-        @Override
-        public void run() {
-            super.run();
-            while (isRunning) {
-                frames++;
-            }
-        }
-    };
     public static void main(String[] args) {
-//        isRunning = true;
-//        framesCounter.start();
-//        ArrayList arrayToSort = new ArrayList(Arrays.asList(4,2,6,9,7,4,6,8,3,5,6,8,4,6,4,0,2,5,8,-1,-3,7,4,6));
-//        insertionSort(arrayToSort.stream().mapToInt(i -> (int) i).toArray());
-//        int[] valueInsertionSort;
-//        valueInsertionSort = insertionSort(arrayToSort.stream().mapToInt(i -> (int) i).toArray());
-//        System.out.println(Arrays.toString(valueInsertionSort));
-//        isRunning = false;
-//        System.out.println(frames);
+        /* Init a FramesCounter (@link FramesCounter) */
+
+        //Test InsertionSort for array of ints
         int[] array = {6,9,4,0};
         insertionSort(array);
         System.out.println(Arrays.toString(array));
-        double[] array2 = {1,6.9,4.5,6.7};
+
+        //Test InsertionSort for array of doubles
+        double[] array2 = {1.8464,6.9486,4.53875,6.76386};
         insertionSort(array2);
         System.out.println(Arrays.toString(array2));
-//        Thread tr = new Thread() {
-//            @Override
-//            public void run() {
-//                insertionSort(arrayToSort.stream().mapToInt(i -> (int) i).toArray());
-//                int[] valueInsertionSort;
-//                super.run();
-//                Random r = new Random();
-//                int j = 0;
-//                while (j < 1000) {
-//                    arrayToSort.add(r.nextInt(1000));
-//                    valueInsertionSort = insertionSort(arrayToSort.stream().mapToInt(i -> (int) i).toArray());
-//                    System.out.flush();
-//                    j++;
-//                    System.out.print((char)13);
-//                    System.out.print(Arrays.toString(valueInsertionSort));
-//                }
-//            }
-//        };
-//        tr.start();
+
+        //Test InsertionSort on ArrayList
+        ArrayList<Double> array3 = new ArrayList<>(Arrays.asList(5.2,0.68,6.567,7.05,1.04));
+        insertionSort(array3);
+        System.out.println(Arrays.toString(array3.toArray()));
     }
     public static void insertionSort(int[] array) {
         for (int j = 1; j < array.length; j++) {
@@ -56,7 +29,7 @@ public class InsertionSort {
             int i = j - 1;
             while (i > -1 && array[i] > key) {
                 array[i + 1] = array[i];
-                i = i - 1;
+                i--;
             }
             array[i + 1] = key;
         }
@@ -67,9 +40,35 @@ public class InsertionSort {
             int i = j - 1;
             while (i > -1 && array[i] > key) {
                 array[i + 1] = array[i];
-                i = i - 1;
+                i--;
             }
             array[i + 1] = key;
+        }
+    }
+    public static void insertionSort(ArrayList array) {
+        for (int j = 1; j < array.size(); j++) {
+            double key = ((Number) array.get(j)).doubleValue();
+            int i = j - 1;
+//            Number comparer = (Number) array.get(i);
+            while (i > -1 && key < ((Number) array.get(i)).doubleValue()) {
+                //array[i + 1] = array[i];
+                array.set(i+1, array.get(i));
+                i--;
+            }
+            array.set(i + 1, key);
+        }
+    }
+    public static void insertionSort(List array) {
+        for (int j = 1; j < array.size(); j++) {
+            double key = ((Number) array.get(j)).doubleValue();
+            int i = j - 1;
+//            Number comparer = (Number) array.get(i);
+            while (i > -1 && key < ((Number) array.get(i)).doubleValue()) {
+                //array[i + 1] = array[i];
+                array.set(i+1, array.get(i));
+                i--;
+            }
+            array.set(i + 1, key);
         }
     }
 }
