@@ -6,7 +6,7 @@ import java.util.*;
 
 public class InsertionSort {
     public static void main(String[] args) {
-        /* Init a FramesCounter (@link FramesCounter) */
+        /* Init a com.khoa.algorithm.utils.FramesCounter (@link com.khoa.algorithm.utils.FramesCounter) */
 
         //Test InsertionSort for array of ints
         int[] array = {6,9,4,0};
